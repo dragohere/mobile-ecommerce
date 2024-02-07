@@ -1,0 +1,188 @@
+[
+  {
+    "productId": 100000,
+    "productName": "Iphone 6s Combo",
+    "imageSrc": [
+      { "urlMain": "https://m.media-amazon.com/images/I/41VJDgH7JQL.jpg" },
+      { "url": "https://m.media-amazon.com/images/I/41VJDgH7JQL.jpg" },
+      {
+        "url": "https://www.maxbhi.com/images/thumbnails/400/400/detailed/1513/lcd_with_touch_screen_for_apple_iphone_6s_128gb_black_by_maxbhi_com_56281.jpg"
+      },
+      {
+        "url": "https://sparepartsonline.in/wp-content/uploads/2018/07/iphone-6-combo-folder-lcd-screen-white1.jpg"
+      },
+      { "url": "https://m.media-amazon.com/images/I/41HSmNBIOML.jpg" }
+    ],
+    "rating": 2,
+    "inStock": "Y",
+    "featured": false,
+    "brand": "iphone",
+    "price": 2100
+  },
+  {
+    "productId": 100001,
+    "productName": "Samsung Galaxy S20 Combo",
+    "imageSrc": [
+      { "urlMain": "https://m.media-amazon.com/images/I/71RZW0KsUhL.jpg" },
+      { "url": "https://m.media-amazon.com/images/I/71RZW0KsUhL.jpg" },
+      {
+        "url": "https://www.samsung.com/us/mobile/phones/galaxy-s20/images/galaxy-s20-black-front-back-640x560.jpg"
+      },
+      {
+        "url": "https://www.samsung.com/us/mobile/phones/galaxy-s20/images/galaxy-s20-black-back-640x560.jpg"
+      },
+      {
+        "url": "https://www.samsung.com/us/mobile/phones/galaxy-s20/images/galaxy-s20-black-front-640x560.jpg"
+      }
+    ],
+    "rating": 4,
+    "inStock": "Y",
+    "featured": true,
+    "brand": "samsung",
+    "price": 1000
+  },
+  {
+    "productId": 100002,
+    "productName": "Google Pixel 4a Combo",
+    "imageSrc": [
+      { "urlMain": "https://m.media-amazon.com/images/I/71AeZS8QWFL.jpg" },
+      { "url": "https://m.media-amazon.com/images/I/71AeZS8QWFL.jpg" },
+      { "url": "https://store.google.com/product/pixel_4a?hl=en-US" },
+      { "url": "https://store.google.com/product/pixel_4a?hl=en-US" },
+      { "url": "https://store.google.com/product/pixel_4a?hl=en-US" }
+    ],
+    "rating": 4.5,
+    "inStock": "Y",
+    "featured": true,
+    "brand": "google",
+    "price": 400
+  },
+  {
+    "productId": 100003,
+    "productName": "LG Velvet Combo",
+    "imageSrc": [
+      { "urlMain": "https://m.media-amazon.com/images/I/71vx5eHcBfL.jpg" },
+      { "url": "https://m.media-amazon.com/images/I/71vx5eHcBfL.jpg" },
+      { "url": "https://www.lg.com/us/cell-phones/lg-k71-velvet" },
+      { "url": "https://www.lg.com/us/cell-phones/lg-k71-velvet" },
+      { "url": "https://www.lg.com/us/cell-phones/lg-k71-velvet" }
+    ],
+    "rating": 3.5,
+    "inStock": "Y",
+    "featured": false,
+    "brand": "lg",
+    "price": 600
+  },
+  {
+    "productId": 100004,
+    "productName": "OnePlus 8T Combo",
+    "imageSrc": [
+      { "urlMain": "https://m.media-amazon.com/images/I/71V4B0p4NQS.jpg" },
+      { "url": "https://m.media-amazon.com/images/I/71V4B0p4NQS.jpg" },
+      { "url": "https://www.oneplus.com/8t" },
+      { "url": "https://www.oneplus.com/8t" },
+      { "url": "https://www.oneplus.com/8t" }
+    ],
+    "rating": 4.5,
+    "inStock": "Y",
+    "featured": true,
+    "brand": "oneplus",
+    "price": 700
+  },
+  {
+    "productId": 100005,
+    "productName": "Motorola Edge Combo",
+    "imageSrc": [
+      { "urlMain": "https://m.media-amazon.com/images/I/714+CWbZzXL.jpg" },
+      { "url": "https://m.media-amazon.com/images/I/714+CWbZzXL.jpg" },
+      { "url": "https://www.motorola.com/us/products/motorola-edge" },
+      { "url": "https://www.motorola.com/us/products/motorola-edge" },
+      { "url": "https://www.motorola.com/us/products/motorola-edge" }
+    ],
+    "rating": 4,
+    "inStock": "Y",
+    "featured": false,
+    "brand": "motorola",
+    "price": 650
+  },
+  {
+    "productId": 100006,
+    "productName": "Sony Xperia 1 II Combo",
+    "imageSrc": [
+      { "urlMain": "https://m.media-amazon.com/images/I/61mA3+8q4PL.jpg" },
+      { "url": "https://m.media-amazon.com/images/I/61mA3+8q4PL.jpg" },
+      { "url": "https://www.sony.com/electronics/smartphones/xperia-1-ii" },
+      { "url": "https://www.sony.com/electronics/smartphones/xperia-1-ii" },
+      { "url": "https://www.sony.com/electronics/smartphones/xperia-1-ii" }
+    ],
+    "rating": 4.5,
+    "inStock": "Y",
+    "featured": false,
+    "brand": "sony",
+    "price": 1200
+  },
+  {
+    "productId": 100007,
+    "productName": "Asus ROG Phone 3 Combo",
+    "imageSrc": [
+      { "urlMain": "https://m.media-amazon.com/images/I/61hDnNiU5vL.jpg" },
+      { "url": "https://m.media-amazon.com/images/I/61hDnNiU5vL.jpg" },
+      { "url": "https://www.asus.com/us/Phone/ROG-Phone-3/techspec/" },
+      { "url": "https://www.asus.com/us/Phone/ROG-Phone-3/techspec/" },
+      { "url": "https://www.asus.com/us/Phone/ROG-Phone-3/techspec/" }
+    ],
+    "rating": 4.5,
+    "inStock": "Y",
+    "featured": true,
+    "brand": "asus",
+    "price": 1000
+  },
+  {
+    "productId": 100008,
+    "productName": "Xiaomi Mi 10 Pro Combo",
+    "imageSrc": [
+      { "urlMain": "https://m.media-amazon.com/images/I/61W+Fp6mLCL.jpg" },
+      { "url": "https://m.media-amazon.com/images/I/61W+Fp6mLCL.jpg" },
+      { "url": "https://www.mi.com/global/mi-10-pro/" },
+      { "url": "https://www.mi.com/global/mi-10-pro/" },
+      { "url": "https://www.mi.com/global/mi-10-pro/" }
+    ],
+    "rating": 4.5,
+    "inStock": "Y",
+    "featured": true,
+    "brand": "xiaomi",
+    "price": 700
+  },
+  {
+    "productId": 100009,
+    "productName": "Oppo Find X2 Pro Combo",
+    "imageSrc": [
+      { "urlMain": "https://m.media-amazon.com/images/I/71k9-4njgTL.jpg" },
+      { "url": "https://m.media-amazon.com/images/I/71k9-4njgTL.jpg" },
+      { "url": "https://www.oppo.com/us/find-x2-pro/" },
+      { "url": "https://www.oppo.com/us/find-x2-pro/" },
+      { "url": "https://www.oppo.com/us/find-x2-pro/" }
+    ],
+    "rating": 4.5,
+    "inStock": "Y",
+    "featured": true,
+    "brand": "oppo",
+    "price": 1200
+  },
+  {
+    "productId": 100010,
+    "productName": "Vivo X50 Pro Combo",
+    "imageSrc": [
+      { "urlMain": "https://m.media-amazon.com/images/I/61iZhTKsJBL.jpg" },
+      { "url": "https://m.media-amazon.com/images/I/61iZhTKsJBL.jpg" },
+      { "url": "https://www.vivo.com/us/products/x50pro" },
+      { "url": "https://www.vivo.com/us/products/x50pro" },
+      { "url": "https://www.vivo.com/us/products/x50pro" }
+    ],
+    "rating": 4,
+    "inStock": "Y",
+    "featured": false,
+    "brand": "vivo",
+    "price": 600
+  }
+]
