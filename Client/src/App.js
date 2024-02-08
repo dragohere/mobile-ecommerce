@@ -16,6 +16,7 @@ import Support from "./Components/Support";
 import Shop from "./Components/Shop/Index";
 import DialogBox from "./Components/DialogBox";
 import ErrorPage from "./Components/ErrorPage";
+import Register from "./Components/RegisterPage/Index";
 
 function App() {
   const [cart, setCart] = useState(() => {
@@ -76,6 +77,7 @@ function App() {
                 path="cart"
                 element={<Cart setCart={setCart} cart={cart} />}
               />
+              <Route path="register" element={<Register />} />
               <Route path="support" element={<Support />} />
               <Route path="*" element={<ErrorPage />} />
             </Route>

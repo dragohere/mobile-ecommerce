@@ -77,7 +77,7 @@ function Navbar(props) {
             <div className="dropdown-content">
               <Link to="/profile">Profile</Link>
               <Link to="/support">Support</Link>
-              {/* <Link to="/register">Register</Link> */}
+              <Link to="/register">Register</Link>
               {isAuthenticated ? (
                 <Link
                   to=""
