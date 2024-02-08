@@ -5,10 +5,12 @@ const PORT = process.env.PORT || 5000;
 const productRoutes = require("./routes/products");
 const registerUser = require("./routes/register");
 const connectDB = require("./db/connect");
+const cors = require('cors');
 
+app.use(cors());
 app.use(express.json()); // To parse JSON bodies
 app.use("/api/products", productRoutes);
-app.use("/api", registerUser);
+app.use("/api",  cors(), registerUser);
 
 const start = async () => {
   try {
