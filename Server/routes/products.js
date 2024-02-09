@@ -6,7 +6,7 @@ const {
   userData,
 } = require("../controllers/products");
 
-router.route("/").get(getAllProducts);
+router.route("/getAllProducts").get(getAllProducts);
 router.route("/testing").get(getAllProductsTesting);
 router.route("/user").post(userData);
 

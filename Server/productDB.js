@@ -8,7 +8,7 @@ const start = async () => {
     await connectDB(process.env.MONGODB_URL);
     await ProductSchema.deleteMany();
     await ProductSchema.create(productsJson);
-    console.log("succes Bhuvan");
+    console.log("Product success");
   } catch (error) {
     console.log(error);
   }

@@ -33,6 +33,7 @@ function Navbar(props) {
   };
   const cartItemList = useSelector((state) => state.cartState);
   const cartLength = cartItemList?.length === 1 ? 1 : cartItemList?.length;
+  const userDetails = JSON.parse(sessionStorage.getItem("userDetails"));
   return (
     <>
       {isLoading && <Loader />}
@@ -63,11 +64,11 @@ function Navbar(props) {
             </Link>
           </li>
           <li className="avatar-dropdown">
-            {isAuthenticated ? (
+            {userDetails?.isAuthenticated ? (
               <Link to="">
                 <Avatar
                   alt="Travis Howard"
-                  src={user?.picture}
+                  src={userDetails?.profileImg}
                   // src="https://media.licdn.com/dms/image/D5603AQEy1aTMMU6naw/profile-displayphoto-shrink_800_800/0/1665038963588?e=2147483647&v=beta&t=2__iMRFbYTMjomR6huuDnh5z3bkbvMuXESE9ThId3FU"
                 />
               </Link>
@@ -75,25 +76,14 @@ function Navbar(props) {
               <Avatar src="/broken-image.jpg" />
             )}
             <div className="dropdown-content">
-              <Link to="/profile">Profile</Link>
-              <Link to="/support">Support</Link>
-              <Link to="/register">Register</Link>
-              {isAuthenticated ? (
-                <Link
-                  to=""
-                  onClick={() =>
-                    logout({
-                      logoutParams: { returnTo: window.location.origin },
-                    })
-                  }
-                >
-                  Sign Out
-                </Link>
-              ) : (
-                <Link to="" onClick={() => loginWithRedirect()}>
-                  Sign in
-                </Link>
-              )}
+              <li >Profile</li>
+              <li >Support</li>
+              <li >Register</li>
+              <Link to="/login"><li >{userDetails?.isAuthenticated ? "Sign Out" : "Sign in"}</li></Link>
+              {/* <Link to="/profile">Profile</Link>
+              <Link to="/support">Register</Link>
+              <Link to="/register">Register</Link> */}
+              
             </div>
           </li>
         </div>
@@ -128,9 +118,7 @@ function Navbar(props) {
             Sign Out
           </li>
         ) : (
-          <li onClick={() => loginWithRedirect()}>
-            Sign in
-          </li>
+          <li onClick={() => loginWithRedirect()}>Sign in</li>
         )}
       </div>
       <Outlet />

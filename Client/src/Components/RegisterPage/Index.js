@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Fingerprint from "@mui/icons-material/Fingerprint";
+import { useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object().shape({
     firstName: Yup.string().required('First name is required'),
@@ -18,6 +19,7 @@ const validationSchema = Yup.object().shape({
   });
 
 function Index(props) {
+  const navigate = useNavigate();
   return (
     <div className="page-container">
       <Formik
@@ -29,9 +31,28 @@ function Index(props) {
           password: "",
           confirmPassword: "",
         }}
-        onSubmit={(values) => {
-          // Handle form submission
-          console.log(values);
+        onSubmit={async (values) => {
+          console.log(values,"valuesRegister")
+          try {
+            const response = await fetch('http://localhost:5000/api/register', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(values),
+            });
+
+            if (!response.ok) {
+              throw new Error('Error registering user');
+            }
+
+            // Handle successful registration (e.g., redirect or show message)
+            console.log('Registration successful');
+            navigate("/")
+          } catch (error) {
+            console.error(error.message);
+            // Handle registration error (e.g., show error message)
+          }
         }}
         validationSchema={validationSchema}
       >
@@ -138,7 +159,7 @@ function Index(props) {
                   helperText={touched.confirmPassword && errors.confirmPassword}
                 />
               </div>
-              <Button color="secondary">
+              <Button type="submit" color="secondary">
                 <IconButton aria-label="fingerprint" color="secondary">
                   Sign Up <Fingerprint />
                 </IconButton>

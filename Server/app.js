@@ -4,13 +4,13 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const productRoutes = require("./routes/products");
 const registerUser = require("./routes/register");
+const getUserDetails = require("./routes/getUserDetails");
 const connectDB = require("./db/connect");
 const cors = require('cors');
 
 app.use(cors());
 app.use(express.json()); // To parse JSON bodies
-app.use("/api/products", productRoutes);
-app.use("/api",  cors(), registerUser);
+app.use("/api", cors(), productRoutes, registerUser, getUserDetails);
 
 const start = async () => {
   try {
