@@ -2,14 +2,23 @@ import React, { useEffect, useState } from "react";
 import Card from "../Card";
 import Grid from "@mui/material/Grid";
 import {useSelector } from "react-redux";
+import Loader from "../Loader";
 
 
 function Home({cart,setCart}) {
   const featuredProductsData  = useSelector(state=>state?.productsState?.featuredProducts);
   const allProductsData  = useSelector(state=>state?.productsState?.allProducts);
-
+// sessionStorage.removeItem("userDetails");
+const [isLoading, setIsLoading]=useState(false)
+useEffect(()=>{
+  setIsLoading(true )
+  setTimeout(()=>{
+    setIsLoading(false)
+  },3000)
+},[])
   return (
     <div className="Home">
+      {isLoading && <Loader/>}
       <div className="welcome-note">
         <div>
           <h1>Welcome to Mobiles</h1>

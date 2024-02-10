@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -11,6 +11,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useAuth0 } from "@auth0/auth0-react";
 import Loader from "./Loader";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -24,6 +25,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 function Navbar(props) {
   const { loginWithRedirect, logout, isAuthenticated, user, isLoading } =
     useAuth0();
+
   const [sideBar, setSideBar] = useState(false);
   const toggleSidebar = () => {
     setSideBar(!sideBar);
@@ -33,7 +35,25 @@ function Navbar(props) {
   };
   const cartItemList = useSelector((state) => state.cartState);
   const cartLength = cartItemList?.length === 1 ? 1 : cartItemList?.length;
-  const userDetails = JSON.parse(sessionStorage.getItem("userDetails"));
+  const userDetailsData = useSelector(
+    (state) => state.userDetailsState?.userDetails
+  );
+  const [users, setUsers] = useState(null);
+  useEffect(() => {
+    setUsers(JSON.parse(sessionStorage.getItem("userDetails")));
+  }, [userDetailsData]);
+  const signOut = async () => {
+    try {
+      const email = users?.email
+      const response = await axios.post("http://localhost:5000/api/signOut", {
+        email,
+      });
+      sessionStorage.removeItem("userDetails")
+      setUsers(null)
+    } catch (error) {
+      console.error("Error signing out:", error.response.data);
+    }
+  };
   return (
     <>
       {isLoading && <Loader />}
@@ -64,11 +84,11 @@ function Navbar(props) {
             </Link>
           </li>
           <li className="avatar-dropdown">
-            {userDetails?.isAuthenticated ? (
+            {users?.isAuthenticated ? (
               <Link to="">
                 <Avatar
                   alt="Travis Howard"
-                  src={userDetails?.profileImg}
+                  src={users?.profileImg}
                   // src="https://media.licdn.com/dms/image/D5603AQEy1aTMMU6naw/profile-displayphoto-shrink_800_800/0/1665038963588?e=2147483647&v=beta&t=2__iMRFbYTMjomR6huuDnh5z3bkbvMuXESE9ThId3FU"
                 />
               </Link>
@@ -76,14 +96,19 @@ function Navbar(props) {
               <Avatar src="/broken-image.jpg" />
             )}
             <div className="dropdown-content">
-              <li >Profile</li>
-              <li >Support</li>
-              <li >Register</li>
-              <Link to="/login"><li >{userDetails?.isAuthenticated ? "Sign Out" : "Sign in"}</li></Link>
+              <li>Profile</li>
+              <li>Support</li>
+              <li>Register</li>
+              {users?.isAuthenticated ? (
+                <li onClick={signOut}>Sign Out</li>
+              ) : (
+                <Link to="/login">
+                  <li>Sign in</li>
+                </Link>
+              )}
               {/* <Link to="/profile">Profile</Link>
               <Link to="/support">Register</Link>
               <Link to="/register">Register</Link> */}
-              
             </div>
           </li>
         </div>

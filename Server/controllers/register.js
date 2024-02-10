@@ -1,5 +1,6 @@
 const registerUser = require("../models/registerSchema");
 const signInUser = require("../models/signInSchema");
+const userdetails = require("../models/userDetailsSchema");
 
 const register = async (req, res) => {
   try {
@@ -15,6 +16,13 @@ const register = async (req, res) => {
       userName,
       password,
     });
+    const userDetailsData = new userdetails({
+      firstName,
+      lastName,
+      email,
+      userName,
+    });
+    (await userdetails.create(userDetailsData));
     res
       .status(200)
       .json({ user: newUserCreated, message: "User registered successfully" });
@@ -26,40 +34,38 @@ const signIn = async (req, res) => {
   try {
     const { email, password } = req.body;
     const isExistingUser = await registerUser.findOne({ email: email });
-    console.log(isExistingUser, "isExistingUser");
+    const { firstName, lastName, userName } = isExistingUser;
     if (isExistingUser) {
       if (isExistingUser.password === password) {
-        const loggedInUSer = await signInUser.create({email});
-        return res.status(200).json({loggedInUSer, msg: `${email} successfully signed in` });
+        await userdetails.findOneAndUpdate({isAuthenticated:true})
+        const loggedInUser = await signInUser.create({ email: email });
+        return res
+          .status(200)
+          .json({ loggedInUser, isAuthenticated:true, msg: `${email} successfully signed in` });
       } else {
         return res.status(400).json({ msg: "Incorrect password" });
       }
     } else {
       return res.status(404).json({ msg: "User not found, please sign up" });
     }
-    // const newUserCreated = await signInUser.create({ firstName, lastName, email, userName, password });
-    // res.status(200).json({ user: newUserCreated, message: "User registered successfully" });
   } catch (error) {
     console.log(error);
     return res.status(400).json({ msg: "Internal Server error" });
   }
 };
 const signOut = async (req, res) => {
- 
   try {
-      const { email } = req.body;
-      const loggedInUSer =  await signInUser.findOne({ email : email });
-      if(loggedInUSer){
-        await signInUser.findOneAndDelete({ email : email });
-        res.status(200).json({ message: "User log out successfully" });
-      }else{
-        res.status(400).json({ message: "User not found" });
-      }
-    } catch (error) {
-      console.error('Error deleting user:', error);
-      return res.status(400).json({ msg: "Internal Server error" });
+    const { email } = req.body;
+    const loggedInUser = await signInUser.findOne({ email: email });
+    if (loggedInUser) {
+      await userdetails.findOneAndUpdate({isAuthenticated:false})
+      await signInUser.findOneAndDelete({ email: email });
+      return res.status(200).json({ isAuthenticated:false, message: "User logged out" });
+    } else {
+      return res.status(404).json({ message: "User not found" });
     }
-    
-  
+  } catch (error) {
+    return res.status(500).json({ msg: "Internal Server Error" });
+  }
 };
 module.exports = { register, signIn, signOut };

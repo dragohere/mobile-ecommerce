@@ -1,7 +1,8 @@
 const registerUser = require("../models/registerSchema");
+const userDetails = require("../models/userDetailsSchema")
 const getUserDetails = async (req, res) => {
   const { email } = req.body;
-  const getUser_db = await registerUser.findOne({ email: email });
+  const getUser_db = await userDetails.findOne({ email: email });
   console.log(getUser_db,"getUser_db");
   if (getUser_db.email === email) {
     return res.status(200).json({
@@ -15,8 +16,7 @@ const getUserDetails = async (req, res) => {
       cartList: [],
       orders: [],
       isActive: true,
-      isAuthenticated:true,
-      msg: `Thank you ${getUser_db?.firstName} ${getUser_db?.lastName}`,
+      isAuthenticated: getUser_db?.isAuthenticated,
     });
   }
 };

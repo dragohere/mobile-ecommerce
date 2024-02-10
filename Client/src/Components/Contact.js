@@ -22,7 +22,6 @@ function Contact(props) {
         message: "",
       }}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
-        // const axios = require('axios');
         try {
           setIsLoader(true);
           await axios.post('https://formspree.io/f/xeqyqbjg', values);

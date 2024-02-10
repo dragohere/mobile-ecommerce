@@ -1,13 +1,13 @@
 const connectDB = require("./db/connect");
-const registerSchema = require("./models/registerSchema");
-const registerUser = require("./registerUser.json");
+const userDetailsSchema = require("./models/signInSchema");
+const userDetails = require("./userDetails.json");
 require("dotenv").config();
 
 const start = async () => {
   try {
     await connectDB(process.env.MONGODB_URL);
-    await registerSchema.deleteMany();
-    await registerSchema.create(registerUser);
+    await userDetailsSchema.deleteMany();
+    await userDetailsSchema.create(userDetails);
     console.log("User Registered");
   } catch (error) {
     console.log(error);

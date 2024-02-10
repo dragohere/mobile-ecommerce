@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart } from "../redux/CartItems/CartItemsActions";
-import { useAuth0 } from "@auth0/auth0-react";
 import DialogBox from "./DialogBox";
 import MUIDataTable from "mui-datatables";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SnackBar from "./BarSnack";
+import { useNavigate } from "react-router-dom";
 
 function Cart(props) {
-  const { loginWithRedirect, logout, isAuthenticated, user, isLoading } =
-    useAuth0();
+  const userData = JSON.parse(sessionStorage.getItem("userDetails"));
+  const navigate = useNavigate();
   const cartItemList = useSelector((state) => state.cartState);
   const dispatch = useDispatch();
 
@@ -35,7 +35,8 @@ function Cart(props) {
     setSnackBarOpen(true);
   };
   const signInFromCart = () => {
-    loginWithRedirect();
+    // loginWithRedirect();
+    navigate("/login");
     setDialogOpen(false);
   };
   const handleCloseSnackBar = () => {
@@ -168,10 +169,15 @@ function Cart(props) {
               columns={columns}
               options={options}
             />
-            {isAuthenticated ? (
-              <Button className="buy-button" variant="outlined" color="success">
-                Buy
-              </Button>
+            {userData?.isAuthenticated ? (
+              <div className="buy-button">
+                <Button
+                  variant="contained"
+                  color="success"
+                >
+                  Buy
+                </Button>
+              </div>
             ) : (
               <div className="buy-button">
                 <Button
