@@ -101,7 +101,7 @@ function Cart(props) {
       name: "",
       label: "Delete",
       options: {
-        filter: true,
+        filter: false,
         sort: false,
         customBodyRender: (value, tableMeta, updateValue) => {
           // Render custom component for the quantity column

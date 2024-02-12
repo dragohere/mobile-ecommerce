@@ -32,7 +32,6 @@ function Index(props) {
           confirmPassword: "",
         }}
         onSubmit={async (values) => {
-          console.log(values,"valuesRegister")
           try {
             const response = await fetch('http://localhost:5000/api/register', {
               method: 'POST',

@@ -18,7 +18,7 @@ useEffect(()=>{
 },[])
   return (
     <div className="Home">
-      {isLoading && <Loader/>}
+      {/* {isLoading && <Loader/>} */}
       <div className="welcome-note">
         <div>
           <h1>Welcome to Mobiles</h1>

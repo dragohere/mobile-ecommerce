@@ -1,5 +1,5 @@
-const connectDB = require("./db/connect");
-const registerSchema = require("./models/registerSchema");
+const connectDB = require("../../db/connect");
+const registerSchema = require("../../models/registerSchema");
 const registerUser = require("./registerUser.json");
 require("dotenv").config();
 

@@ -14,49 +14,26 @@ function SingleProduct({ cart, setCart, }) {
   const navigate = useNavigate();
   const { productName, mainImage, price, imageSrc, productId } = location.state;
   const [ratingValue, setRatingValue] = React.useState(4);
-  const [countValue, setCountValue] = React.useState(1);
+  const [quantity, setQuantity] = React.useState(1);
   const [currentImage, setCurrentImage] = React.useState(mainImage);
   const productDecrement = () => {
-    if (countValue > 1) {
-      setCountValue((prevCount) => prevCount - 1);
+    if (quantity > 1) {
+      setQuantity((prevCount) => prevCount - 1);
     }
   };
   const productIncrement = () => {
     // dispatch(allProducts())
-    setCountValue((prevCount) => prevCount + 1);
+    setQuantity((prevCount) => prevCount + 1);
   };
   const selectImage = (imageValue) => {
     setCurrentImage(imageValue);
   };
-  const addToCart = (productToAdd) => {
-    setCart((prevCart) => {
-      // Check if the product already exists in the cart
-      const existingProductIndex = prevCart.findIndex(
-        (item) => item.productId === productToAdd
-      );
-
-      if (existingProductIndex >= 0) {
-        // If the product exists, update its quantity
-        return prevCart.map((item, index) => {
-          if (index === existingProductIndex) {
-            return { ...item, quantity: item.quantity + 1 }; // Increment quantity
-          }
-          return item; // Leave other items unchanged
-        });
-      } else {
-        // If the product doesn't exist, add it to the cart with quantity of 1
-        return [
-          ...prevCart,
-          {
-            productId: productId,
-            quantity: countValue,
-            image: currentImage,
-            price: price,
-            productName: productName,
-          },
-        ];
-      }
-    });
+  const addToCart = () => {
+    const productDetails = {
+      productName, mainImage, price, productId, quantity
+    }
+    dispatch(cartItems(productDetails));
+    navigate("/cart");
   };
   useEffect(()=>{
 
@@ -114,7 +91,7 @@ function SingleProduct({ cart, setCart, }) {
             <button onClick={productDecrement} className="product-decrement">
               -
             </button>
-            <div className="product-ordercount-value">{countValue}</div>
+            <div className="product-ordercount-value">{quantity}</div>
             <button onClick={productIncrement} className="product-increment">
               +
             </button>
@@ -122,10 +99,11 @@ function SingleProduct({ cart, setCart, }) {
           <Button
             variant="contained"
             color="success"
-            onClick={() => {
-              dispatch(cartItems(location.state, countValue));
-              navigate("/cart");
-            }}
+            onClick={addToCart}
+            // onClick={() => {
+            //   dispatch(cartItems(location.state, quantity));
+            //   navigate("/cart");
+            // }}
             className="addtocart-btn"
           >
             Add to cart

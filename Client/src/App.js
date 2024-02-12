@@ -19,10 +19,11 @@ import ErrorPage from "./Components/ErrorPage";
 import Register from "./Components/RegisterPage/Index";
 
 function App() {
-  const [cart, setCart] = useState(() => {
-    const savedCart = sessionStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+  const [cart, setCart] = useState({});
+  // const [cart, setCart] = useState(() => {
+  //   const savedCart = sessionStorage.getItem("cart") || [];
+  //   return savedCart ? JSON.parse(savedCart) : [];
+  // });
   const [warningOpen, setWarningOpen] = useState(false);
   const [errorPage, setErrorPage] = useState(false);
   const DialogBoxData = {

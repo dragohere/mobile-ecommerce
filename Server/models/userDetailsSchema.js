@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-
-const userDetailsSchema = new mongoose.Schema({
+const Schema = mongoose.Schema;
+const userDetailsSchema = new Schema({
     firstName: {
         type:String,
         required:true,
@@ -15,7 +15,7 @@ const userDetailsSchema = new mongoose.Schema({
     },
     email: {
         type:String,
-        required:true,
+        
     },
     isAdmin: {
         type:Boolean,
@@ -37,6 +37,10 @@ const userDetailsSchema = new mongoose.Schema({
     },
     isAuthenticated: {
         type:Boolean,
+    },
+    msg: {
+        type:String,
+        default:"Registered"
     },
 });
 module.exports = mongoose.model("userDetails", userDetailsSchema);

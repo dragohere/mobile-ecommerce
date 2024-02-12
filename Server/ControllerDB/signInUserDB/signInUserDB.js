@@ -1,5 +1,5 @@
-const connectDB = require("./db/connect");
-const signInUserSchema = require("./models/signInSchema");
+const connectDB = require("../../db/connect");
+const signInUserSchema = require("../../models/signInSchema");
 const signInUser = require("./signUser.json");
 require("dotenv").config();
 

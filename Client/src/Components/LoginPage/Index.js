@@ -66,7 +66,6 @@ function Index(props) {
       });
       if (response.status === 200) {
         const userDetails = await response.json();
-        console.log(userDetails, "userDetails");
         // dispatch({ type: GET_USER_DETAILS, payload: userDetails });
         dispatch(reuseDispatch(GET_USER_DETAILS, userDetails));
         navigate("/");

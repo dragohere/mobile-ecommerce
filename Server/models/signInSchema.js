@@ -3,11 +3,7 @@ const mongoose = require("mongoose");
 const signInSchema = new mongoose.Schema({
   email: {
     type: String,
-    // required: true,
-  },
-  password: {
-    type: String,
-    // required:true,
-  }
+    required: true,
+  } 
 });
 module.exports = mongoose.model("signInUser", signInSchema);

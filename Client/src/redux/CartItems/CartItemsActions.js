@@ -1,9 +1,9 @@
 import { CARTITEMS, REMOVEFROMCART } from "./CartItemsTypes";
 
-export const cartItems = (productDetails, quantity)=>{
+export const cartItems = (productDetails)=>{
     return{
         type:CARTITEMS,
-        payload:{productDetails, quantity},
+        payload:{productDetails},
     }
 }
 export const removeFromCart = (productId)=>{

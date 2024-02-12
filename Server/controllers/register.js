@@ -37,8 +37,8 @@ const signIn = async (req, res) => {
     const { firstName, lastName, userName } = isExistingUser;
     if (isExistingUser) {
       if (isExistingUser.password === password) {
-        await userdetails.findOneAndUpdate({isAuthenticated:true})
         const loggedInUser = await signInUser.create({ email: email });
+        await userdetails.findOneAndUpdate({isAuthenticated:true})
         return res
           .status(200)
           .json({ loggedInUser, isAuthenticated:true, msg: `${email} successfully signed in` });
